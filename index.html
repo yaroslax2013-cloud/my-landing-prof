@@ -25,12 +25,10 @@ body {
     margin-top:20px;
 }
 
-.counter {
-    font-size:36px;
-    color:#22c55e;
-    text-align:center;
-    margin:20px 0;
-    font-weight:bold;
+.container {
+    max-width:850px;
+    margin:40px auto 0;
+    padding:20px 20px 5px;
 }
 
 .block {
@@ -110,7 +108,9 @@ body {
 <p>Real story from Lagos, Nigeria</p>
 
 <img src="win1.jpeg" class="hero">
-
+<div id="scrollHint" style="text-align:center; opacity:0.7; margin-top:10px;">
+⬇️ Scroll to see what happened
+</div>
 <div class="counter" id="counter">₦0</div>
 
 <div class="block">My name is Daniel. I live in Lagos. I never believed in online slots.</div>
@@ -128,7 +128,7 @@ body {
 </div>
 
 <div class="cta">
-<a class="btn" href="https://track.onepartners.tech/click?o=4746&a=14792">PLAY NOW</a>
+<a class="btn" id="mainBtn" href="https://track.onepartners.tech/click?o=4746&a=14792">PLAY NOW</a>
 </div>
 
 <div class="block">I’m not saying it happens every time. But now I understand why people try.</div>
@@ -183,7 +183,32 @@ setInterval(()=>{
     setTimeout(()=>popup.style.display="none",3000);
 },5000);
 
-</script>
+</script
+// scroll hint hide
+window.addEventListener("scroll", () => {
+    let hint = document.getElementById("scrollHint");
+    if(window.scrollY > 50){
+        hint.style.display = "none";
+    }
+});
 
+// auto scroll до кнопки через 5 сек
+setTimeout(()=>{
+    document.getElementById("mainBtn").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}, 5000);
+
+// підсвітка кнопки коли видно
+const btn = document.getElementById("mainBtn");
+
+window.addEventListener("scroll", ()=>{
+    let rect = btn.getBoundingClientRect();
+    if(rect.top < window.innerHeight && rect.bottom > 0){
+        btn.classList.add("pulse");
+    }
+});
+    
 </body>
 </html>
