@@ -151,52 +151,6 @@ body {
 
 // scroll blocks
 const blocks = document.querySelectorAll('.block');
-window.addEventListener('scroll', ()=>{
-    blocks.forEach(b=>{
-        if(b.getBoundingClientRect().top < window.innerHeight-50){
-            b.classList.add('show');
-        }
-    });
-});
-
-// counter
-let count = 0;
-let target = 85000;
-let counter = document.getElementById("counter");
-
-let int = setInterval(()=>{
-    count += 500;
-    if(count >= target){
-        count = target;
-        clearInterval(int);
-    }
-    counter.innerText = "₦" + count.toLocaleString();
-}, 30);
-
-// chat animation
-let msgs = document.querySelectorAll(".msg");
-msgs.forEach((msg, i)=>{
-    setTimeout(()=>msg.classList.add("show"), i*800);
-});
-
-// popup
-const names = ["Chinedu","Aisha","Emeka","Fatima"];
-const popup = document.getElementById("popup");
-
-setInterval(()=>{
-    let name = names[Math.floor(Math.random()*names.length)];
-    let amount = Math.floor(Math.random()*90000)+10000;
-
-    popup.innerText = name+" won ₦"+amount;
-    popup.style.display="block";
-
-    setTimeout(()=>popup.style.display="none",3000);
-},5000);
-
-<script>
-
-// scroll blocks
-const blocks = document.querySelectorAll('.block');
 
 window.addEventListener('scroll', ()=>{
     blocks.forEach(b=>{
@@ -248,10 +202,9 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// кнопка
+// button
 const btn = document.getElementById("mainBtn");
 
-// авто скрол (тільки якщо кнопка є)
 setTimeout(()=>{
     if(btn){
         btn.scrollIntoView({
@@ -261,7 +214,7 @@ setTimeout(()=>{
     }
 }, 4000);
 
-// pulse ефект
+// pulse
 window.addEventListener("scroll", ()=>{
     if(!btn) return;
 
